@@ -19,7 +19,7 @@
 
 ## Tecnologias usadas
 - ☕ JAVA 17
-- SPRING BOOT 3.2.5
+- SPRING BOOT 3.5.5
 - Spring Security
 - Spring JPA
 - Padrão de Projeto: DTO(Data Transfer Object)
