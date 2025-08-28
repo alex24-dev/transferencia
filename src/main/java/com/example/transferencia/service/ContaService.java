@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class ContaService {
 
@@ -21,4 +23,5 @@ public class ContaService {
         repository.save(conta);
         return modelMapper.map(conta,ContaDTO.class);
     }
+
 }

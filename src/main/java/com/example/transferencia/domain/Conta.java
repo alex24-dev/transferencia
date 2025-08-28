@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "conta")
 @Getter
@@ -19,5 +22,9 @@ public class Conta {
     private Long id;
     private String contaOrigem;
     private String contaDestino;
-    private Integer valor;
+    private BigDecimal valor;
+    private LocalDate dataTransferencia;
+    private LocalDate dataAgendamento;
+
+
 }

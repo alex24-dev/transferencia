@@ -1,7 +1,9 @@
 package com.example.transferencia.controller;
 
 import com.example.transferencia.dto.ContaDTO;
+import com.example.transferencia.service.ContaService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,9 @@ import java.net.URI;
 @RestController
 @RequestMapping("/api/conta")
 public class ContaController {
+
+    @Autowired
+    ContaService service;
 
     @PostMapping
     public ResponseEntity<ContaDTO> cadastrar(@RequestBody @Valid ContaDTO dto, UriComponentsBuilder uri){
