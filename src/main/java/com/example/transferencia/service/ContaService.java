@@ -5,11 +5,14 @@ import com.example.transferencia.dto.ContaDTO;
 import com.example.transferencia.repository.ContaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 @Service
 public class ContaService {
@@ -50,6 +53,13 @@ public class ContaService {
         } else {
             return BigDecimal.ZERO; // Fora do intervalo
         }
+    }
+
+    public List<ContaDTO> listar() {
+        List<Conta> contas = repository.findAll();
+        return contas.stream()
+                .map(conta -> modelMapper.map(conta, ContaDTO.class))
+                .toList();
     }
 
 }
