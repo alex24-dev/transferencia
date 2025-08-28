@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @Service
 public class ContaService {
@@ -20,8 +22,34 @@ public class ContaService {
 
     public ContaDTO cadastrar(ContaDTO contaDTO){
         Conta conta = modelMapper.map(contaDTO,Conta.class);
+        // Define a data de agendamento como hoje
+        LocalDate hoje = LocalDate.now();
+        conta.setDataAgendamento(hoje);
+
+        // Calcula a diferença em dias entre as datas
+        long dias = ChronoUnit.DAYS.between(hoje, conta.getDataTransferencia());
+
+        // Calcula a taxa com base na tabela
+        BigDecimal taxa = calcularTaxa(conta.getValor(), dias);
+        conta.setTaxa(taxa);
+
+        // Salva a transferência no banco de dados
         repository.save(conta);
-        return modelMapper.map(conta,ContaDTO.class);
+
+        // Retorna o DTO atualizado
+        return modelMapper.map(conta, ContaDTO.class);
+    }
+
+    private BigDecimal calcularTaxa(BigDecimal valor, long dias) {
+        if (dias == 0) {
+            return valor.multiply(BigDecimal.valueOf(0.025)); // 2,5%
+        } else if (dias >= 1 && dias <= 10) {
+            return BigDecimal.ZERO; // 0,0%
+        } else if (dias >= 11 && dias <= 20) {
+            return valor.multiply(BigDecimal.valueOf(0.082)); // 8,2%
+        } else {
+            return BigDecimal.ZERO; // Fora do intervalo
+        }
     }
 
 }

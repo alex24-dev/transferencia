@@ -23,6 +23,7 @@ public class Conta {
     private String contaOrigem;
     private String contaDestino;
     private BigDecimal valor;
+    private BigDecimal taxa;
     private LocalDate dataTransferencia;
     private LocalDate dataAgendamento;
 
