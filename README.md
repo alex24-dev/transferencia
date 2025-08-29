@@ -24,3 +24,16 @@
 - Spring JPA
 - Padrão de Projeto: DTO(Data Transfer Object)
 - Inversão de Controle/ Injeção de dependência
+- Bean Validation
+- Verbos HTTP
+- Regex
+- Maven
+- Migration
+- SQL
+- lombok
+- Swagger
+- Git/Github
+
+## ✍ Funcionalidades do Projeto
+
+- Transferência de valor entre contas
