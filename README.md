@@ -32,6 +32,7 @@
 - Maven
 - Migration
 - SQL
+- -MySQL workbeanch (H2 não funcionou)
 - lombok
 - Swagger
 - Git/Github
