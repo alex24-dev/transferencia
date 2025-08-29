@@ -2,6 +2,7 @@ package com.example.transferencia.service;
 
 import com.example.transferencia.domain.Conta;
 import com.example.transferencia.dto.ContaDTO;
+import com.example.transferencia.dto.ContaResponseDTO;
 import com.example.transferencia.repository.ContaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,10 +67,10 @@ public class ContaService {
         }
     }
 
-    public List<ContaDTO> listar() {
+    public List<ContaResponseDTO> listar() {
         List<Conta> contas = repository.findAll();
         return contas.stream()
-                .map(conta -> modelMapper.map(conta, ContaDTO.class))
+                .map(conta -> modelMapper.map(conta, ContaResponseDTO.class))
                 .toList();
     }
 

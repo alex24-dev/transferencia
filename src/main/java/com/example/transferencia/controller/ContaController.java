@@ -1,6 +1,7 @@
 package com.example.transferencia.controller;
 
 import com.example.transferencia.dto.ContaDTO;
+import com.example.transferencia.dto.ContaResponseDTO;
 import com.example.transferencia.service.ContaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class ContaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ContaDTO>> listar() {
-        List<ContaDTO> contas = service.listar();
+    public ResponseEntity<List<ContaResponseDTO>> listar() {
+        List<ContaResponseDTO> contas = service.listar();
         return ResponseEntity.ok(contas);
     }
 
