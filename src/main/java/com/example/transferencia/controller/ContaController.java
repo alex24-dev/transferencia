@@ -4,9 +4,6 @@ import com.example.transferencia.dto.ContaDTO;
 import com.example.transferencia.service.ContaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -27,7 +24,6 @@ public class ContaController {
         URI endereco = uri.path("/conta").buildAndExpand().toUri();
         return ResponseEntity.created(endereco).body(contaDTO);
     }
-
 
     @GetMapping
     public ResponseEntity<List<ContaDTO>> listar() {

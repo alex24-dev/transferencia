@@ -1,14 +1,10 @@
 package com.example.transferencia.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -20,6 +16,7 @@ public class ContaDTO {
 
     @NotBlank
     @NotEmpty(message = "conta de origem não pode ser vazio")
+    @Pattern(regexp = "^.{7}$", message = "deve conter exatamente 7 caracteres")
     private String contaOrigem;
 
     @NotBlank
@@ -29,7 +26,6 @@ public class ContaDTO {
     @NotNull
     @Positive(message = "valor não pode ser negativo")
     private BigDecimal valor;
-
 
     private LocalDate dataTransferencia;
     private LocalDate dataAgendamento;

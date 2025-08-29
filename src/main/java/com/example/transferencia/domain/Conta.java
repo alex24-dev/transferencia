@@ -27,5 +27,4 @@ public class Conta {
     private LocalDate dataTransferencia;
     private LocalDate dataAgendamento;
 
-
 }
